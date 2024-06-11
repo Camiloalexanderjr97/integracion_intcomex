@@ -77,7 +77,7 @@ class IntegracionApplicationTests {
 		ResponseEntity<ProductModel> response = controller.createProduct(productModel);
 
 		assertEquals(HttpStatus.OK, response.getStatusCode());
-		assertEquals(product, response.getBody());
+		assertEquals(productModel, response.getBody());
 	}
 
 	@Test
