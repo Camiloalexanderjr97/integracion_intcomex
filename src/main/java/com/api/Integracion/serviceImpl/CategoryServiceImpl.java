@@ -17,7 +17,11 @@ public class CategoryServiceImpl implements CategoryService{
     private CategoryConverter categoryConverter;
 
     public Category createCategory(CategoryModel model) {
-
-        return categoryRepository.save(categoryConverter.ModelToEntity(model));
-    }
+        try {
+            return categoryRepository.save(categoryConverter.ModelToEntity(model));
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+            }
 }
