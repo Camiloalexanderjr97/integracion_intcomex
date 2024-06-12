@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class ProductConverter {
 
 	
-	public Product modelToEntidy(ProductModel model) {
+	public Product modelToEntity(ProductModel model) {
 		Product product = new Product();
 		product.setId(model.getId());
 		product.setName(model.getName());

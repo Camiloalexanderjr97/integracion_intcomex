@@ -23,17 +23,32 @@ public class ProductServiceImpl implements ProductService{
 		private ProductConverter productConverter;
 
 	    public ProductModel createProduct(ProductModel product) {
-
-			return productConverter.entityToModel(productRepository.save(productConverter.modelToEntidy(product)));
+			
+				try {
+				return	productConverter.entityToModel(productRepository.save(productConverter.modelToEntity(product)));
+				} catch (Exception e) {
+					System.out.println(e);
+					return null;
+				}
 	    }
 
 	    public Page<Product> getProducts(Pageable pageable) {
+			try {
+				return productRepository.findAll(pageable);
 
-			return productRepository.findAll(pageable);
+			} catch (Exception e) {
+				System.out.println(e);
+				return null;
+			}
 	    }
 
 	    public Optional<ProductModel> getProductById(int id) {
-	        return Optional.ofNullable(productConverter.entityToModel(productRepository.findById(id).get()));
+			try {
+				return Optional.ofNullable(productConverter.entityToModel(productRepository.findById(id).get()));
+			} catch (Exception e) {
+				System.out.println(e);
+				return null;
+			}
 	    }
 
 		public boolean saveAll(List<Product> list){
